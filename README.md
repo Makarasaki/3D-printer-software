@@ -1,5 +1,2 @@
 # 3D printer software
-Hello guys, my name is Maks.
-Here you have software we made with my friends for our custom built 3D printer.
-It's my first big project so please be understanding.
-Don't hesistate to ask me questions.
+Hi guys, my name is Maks, with my friends we made custom 3D printer, here you have software for it. It's made on arduino mega with ramps 1.6. Don't hesitate to ask questions and enjoy ;)
