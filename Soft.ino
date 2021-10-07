@@ -326,18 +326,20 @@ void linia(float NN_poz_X, float NN_poz_Y, float NN_poz_Z, float NN_poz_E) {
         }
         opoznienie_wl = (opoznienie < op_min) ? op_min : opoznienie;
     */
-    if (i > op_pom) {
+
+    /*
+      if (i > op_pom) {
       opoznienie = opoznienie - op_krok;
-    } else {
+      } else {
       opoznienie = opoznienie + op_krok;
-    }
+      }
 
-    if (opoznienie < op_min) {
+      if (opoznienie < op_min) {
       opoznienie_wl = op_min;
-    } else {
+      } else {
       opoznienie_wl = opoznienie;
-    }
-
+      }
+    */
     //Serial.println(opoznienie_wl, DEC);
 
     Xpom -= motor[0].delta;
@@ -373,14 +375,16 @@ void linia(float NN_poz_X, float NN_poz_Y, float NN_poz_Z, float NN_poz_E) {
     (motor[2].krok == 1) ? digitalWrite(motor[2].step_pin, HIGH) : digitalWrite(motor[2].step_pin, LOW);
     (motor[3].krok == 1) ? digitalWrite(motor[3].step_pin, HIGH) : digitalWrite(motor[3].step_pin, LOW);
 
-    delayMicroseconds(opoznienie_wl);
+    delayMicroseconds(100);
+    //delayMicroseconds(opoznienie_wl);
 
     digitalWrite(motor[0].step_pin, LOW);
     digitalWrite(motor[1].step_pin, LOW);
     digitalWrite(motor[2].step_pin, LOW);
     digitalWrite(motor[3].step_pin, LOW);
 
-    delayMicroseconds(opoznienie_wl);
+    delayMicroseconds(100);
+    //delayMicroseconds(opoznienie_wl);
 
     motor[0].krok = 0;
     motor[1].krok = 0;
@@ -737,13 +741,13 @@ void draw_manual(void) {
   u8g.drawBitmapP(8, 27, 14, 112, menu_v2_h);
   u8g.setFont(u8g_font_5x7);
   u8g.setPrintPos(12, 20);
-  u8g.drawStr(2, 20, "X:");
+  u8g.drawStr(2, 20, "X");
   u8g.print(poz_X, 2);
   u8g.setPrintPos(56, 20);
-  u8g.drawStr(46, 20, "Y:");
+  u8g.drawStr(46, 20, "Y");
   u8g.print(poz_Y, 2);
   u8g.setPrintPos(100, 20);
-  u8g.drawStr(90, 20, "Z:");
+  u8g.drawStr(90, 20, "Z");
   u8g.print(poz_Z, 2);
 }
 
@@ -842,12 +846,12 @@ void draw_dokladnosc(void) {
 }
 
 void draw_sterowanie(char os, float N_poz) {
-  //char buf[8];
+  char buf[2];
+  sprintf (buf, "%c:", os);
   u8g.drawBitmapP(8, 27, 14, 112, menu_v2_h);
 
   u8g.setFont(u8g_font_5x7);
-  u8g.setPrintPos(38, 16);
-  u8g.print(("%c:", os), 2);
+  u8g.drawStr(38, 16, buf);
 
   u8g.setPrintPos(39, 36);
   u8g.print(N_poz, 2);
