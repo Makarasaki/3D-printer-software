@@ -307,13 +307,13 @@ void linia(float NN_poz_X, float NN_poz_Y, float NN_poz_Z, float NN_poz_E) {
     digitalWrite(motor[3].dir_pin, motor[3].dir);
   }
 
-  int Max = max(max(motor[0].delta, motor[1].delta), max(motor[2].delta, motor[3].delta));
-  int i = Max;
-  int Xpom = Max / 2;
-  int Ypom = Max / 2;
-  int Zpom = Max / 2;
-  int Epom = Max / 2;
-  int op_pom = Max / 2;
+  long Max = max(max(motor[0].delta, motor[1].delta), max(motor[2].delta, motor[3].delta));
+  long i = Max;
+  long Xpom = Max / 2;
+  long Ypom = Max / 2;
+  long Zpom = Max / 2;
+  long Epom = Max / 2;
+  long op_pom = Max / 2;
 
   for (;;) {
     if (i-- == 0) break;
